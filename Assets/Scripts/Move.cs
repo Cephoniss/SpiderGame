@@ -6,6 +6,7 @@ public class Move : MonoBehaviour
 {
     [SerializeField] float jump = 1f;
     [SerializeField] float rotationSpeed = 1f;
+    [SerializeField] AudioClip jumpclip;
     Rigidbody rb;
     AudioSource jumpaudio;
 
@@ -35,7 +36,7 @@ public class Move : MonoBehaviour
             rb.AddRelativeForce(Vector3.up* Time.deltaTime * jump);
             if(!jumpaudio.isPlaying)
             {
-                jumpaudio.Play();
+                jumpaudio.PlayOneShot(jumpclip);
             }
             else
             {

@@ -70,4 +70,17 @@ public class CollisionHandler : MonoBehaviour
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(currentSceneIndex);
     }
+
+    //void Update()
+    //{
+    //    CheatNL();
+    //}
+
+    //void CheatNL()
+    //{
+        //if (Input.GetKey(KeyCode.L))
+        //{
+        //NextLevel();
+        //}
+    //}
 }

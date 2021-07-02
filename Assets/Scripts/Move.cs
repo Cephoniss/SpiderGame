@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Move : MonoBehaviour
 {
+    //[SerializeField] ParticleSystem leftpart;
+    //[SerializeField] ParticleSystem rightpart;
+    //[SerializeField] ParticleSystem jumppart;
     [SerializeField] float jump = 1f;
     [SerializeField] float rotationSpeed = 1f;
     [SerializeField] AudioClip jumpclip;
@@ -11,18 +14,13 @@ public class Move : MonoBehaviour
     AudioSource jumpaudio;
 
     
-    // Start is called before the first frame update
+    
     void Start()
     {
         rb = GetComponent<Rigidbody>(); 
         jumpaudio = GetComponent<AudioSource>();
     }
        
-    
-
-    // Update is called once per frame
-    
-
     void Update()
     {
         ProcessJump();
@@ -33,20 +31,31 @@ public class Move : MonoBehaviour
        {
         if (Input.GetKey(KeyCode.Space))
         {
-            rb.AddRelativeForce(Vector3.up* Time.deltaTime * jump);
-            if(!jumpaudio.isPlaying)
-            {
-                jumpaudio.PlayOneShot(jumpclip);
-            }
-            else
-            {
-                jumpaudio.Stop();
-            }
+
+            rb.AddRelativeForce(Vector3.up * Time.deltaTime * jump);
+            //jumppart.Play();
+
+            StartJumpAudio();
 
         }
-    
-       }
-       void ProcessRotation()
+
+    }
+
+    private void StartJumpAudio()
+    {
+        if (!jumpaudio.isPlaying)
+        {
+            jumpaudio.PlayOneShot(jumpclip);
+
+        }
+        else
+        {
+            jumpaudio.Stop();
+
+        }
+    }
+
+    void ProcessRotation()
        {
             if (Input.GetKey(KeyCode.A))
         {
